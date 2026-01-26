@@ -9,11 +9,11 @@ The goal is to transform raw financial datasets (transactions, customers, and ca
 
 The project follows modern data engineering best practices, including:
 
-Layered data architecture (Raw → Processed → Curated),
-Schema standardization and data quality handling
-Data Normalization
-Spark SQL–driven analytics,
-Analytics-ready data modeling
+- Layered data architecture (Raw → Processed → Curated),
+- Schema standardization and data quality handling
+- Data Normalization
+- Spark SQL–driven analytics,
+- Analytics-ready data modeling
 
 # Problem Statement
 
@@ -21,10 +21,10 @@ Financial institutions generate large volumes of transactional data daily. Howev
 
 Key challenges addressed:
 
-Inconsistent schemas and data types,
-Poor data quality (string-based numeric fields, missing values, errors),
-Lack of business-aligned analytical models,
-Difficulty answering high-impact financial and risk-related questions
+- Inconsistent schemas and data types
+- Poor data quality (string-based numeric fields, missing values, errors),
+- Lack of business-aligned analytical models,
+- Difficulty answering high-impact financial and risk-related questions
 
 This project solves these challenges by building a scalable Spark-based pipeline that converts raw financial data into structured, query-optimized analytics tables.
 
@@ -88,78 +88,78 @@ The pipeline performs the following transformations:
    - Aggregations are performed using Spark SQL for optimized execution
 
 # Business Questions
-Which merchant cities have the highest transaction volume?
-Which merchant cities have the highest transaction error?
-How does card type influence spending behavior?
-Which card type is most used?
-What is the average transaction value per customer?
-How does age affect customer spending?
-Does age influence credit score?
+- Which merchant cities have the highest transaction volume?
+- Which merchant cities have the highest transaction error?
+- How does card type influence spending behavior?
+- Which card type is most used?
+- What is the average transaction value per customer?
+- How does age affect customer spending?
+- Does age influence credit score?
 
 # Data Model
 ## Curated Tables
 1. customer_financial_metrics
-One row per customer (client_id)
+- One row per customer (client_id)
 ### Purpose:
-Customer lifetime value
-Spending behavior
-Credit and income analysis
+- Customer lifetime value
+- Spending behavior
+- Credit and income analysis
 ### Key metrics:
-Total transactions
-Total and average spend
-Credit score, income, debt
-First and last transaction dates
+- Total transactions
+- Total and average spend
+- Credit score, income, debt
+- First and last transaction dates
 
 2. card_usage_risk_metrics
-One row per card (card_id)
+-One row per card (card_id)
 ### Purpose:
-Card usage analysis
-Error and risk monitoring
-Chip usage evaluation
+- Card usage analysis
+- Error and risk monitoring
+- Chip usage evaluation
 ### Key metrics:
-Transaction count
-Total card spend
-Error rate
-Chip vs non-chip transactions
-Expired card usage
+- Transaction count
+- Total card spend
+- Error rate
+- Chip vs non-chip transactions
+- Expired card usage
 
 3. merchant_geography_metrics
-City × State × Merchant Category (MCC)
+- City × State × Merchant Category (MCC)
 ### Purpose:
-Merchant performance tracking
-Geographic transaction concentration
-Error identification
+- Merchant performance tracking
+- Geographic transaction concentration
+- Error identification
 ### Key metrics:
-Transaction volume
-Total spend
-Error counts and 
-Error rates
+- Transaction volume
+- Total spend
+- Error counts and 
+- Error rates
 
 # How to Run Project
 spark-submit /DataProject.py
 
 # Tech Stack
-Apache Spark (PySpark)
-Spark SQL
-Python
-Parquet (columnar storage)
-Git & GitHub
-Linux environment
+- Apache Spark (PySpark)
+- Spark SQL
+- Python
+- Parquet (columnar storage)
+- Git & GitHub
+- Linux environment
 
 # Key Skills Demonstrated
-End-to-end data pipeline design
-PySpark data processing
-Spark SQL analytics
-Financial data modeling
-Data quality and schema enforcement
-Business-driven analytics engineering
+- End-to-end data pipeline design
+- PySpark data processing
+- Spark SQL analytics
+- Financial data modeling
+- Data quality and schema enforcement
+- Business-driven analytics engineering
 
 # Future Improvements
-Airflow orchestration
-Data quality checks
-Incremental data processing
-Cloud deployment (S3 + EMR / Databricks)
-BI integration (Power BI / Tableau)
+- Airflow orchestration
+- Data quality checks
+- Incremental data processing
+- Cloud deployment (S3 + EMR / Databricks)
+- BI integration (Power BI / Tableau)
 
 # Author
 Love Adeola - Aspiring Data Engineer
