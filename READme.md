@@ -43,8 +43,7 @@ Each record in the users data contains personal information of a single user suc
 Cards Data:
 Each records contain card informations(including sensitive info like cvv and card number) which includes card expiry date, card type, card brand, and when card pin was changed
 
-## Architecture Overview
-
+# Architecture Overview
 The pipeline follows a layered data architecture pattern:
 
 1. Raw Layer
@@ -62,12 +61,105 @@ The pipeline follows a layered data architecture pattern:
    - Aggregations and metrics are computed for analytics use cases
    - Important columns are computed
 
-Data Flow:
+Link to all data - https://drive.google.com/drive/folders/1TgscAhQtz0izpGobow1cZTGDxMQbh0ny?usp=sharing
+
+
+## Data Flow:
 Raw Data → PySpark Transformations → Spark SQL Analytics → Curated Tables (Parquet) → Joining data to answer some business questions
 
+# Transformation Logic 
+The pipeline performs the following transformations:
 
+1. Schema Enforcement
+   - Explicit data types are applied to ensure consistency
+   - Invalid records with missing transaction IDs are removed
+   - Some NULL values were replaced with "ONLINE" as they were online transactions
 
+2. Data Cleaning
+   - Duplicate transactions are dropped
+   - Transactions with negative or zero amounts are filtered out
 
+3. Data Standardization
+   - Transaction dates are converted to a standard date format
+   - Currency values are normalized
 
+4. Aggregation
+   - Customer-level metrics such as total spend and transaction count are computed
+   - Aggregations are performed using Spark SQL for optimized execution
 
- 
+# Business Questions
+Which merchant cities have the highest transaction volume?
+Which merchant cities have the highest transaction error?
+How does card type influence spending behavior?
+Which card type is most used?
+What is the average transaction value per customer?
+How does age affect customer spending?
+Does age influence credit score?
+
+# Data Model
+## Curated Tables
+1. customer_financial_metrics
+One row per customer (client_id)
+### Purpose:
+Customer lifetime value
+Spending behavior
+Credit and income analysis
+### Key metrics:
+Total transactions
+Total and average spend
+Credit score, income, debt
+First and last transaction dates
+
+2. card_usage_risk_metrics
+One row per card (card_id)
+### Purpose:
+Card usage analysis
+Error and risk monitoring
+Chip usage evaluation
+### Key metrics:
+Transaction count
+Total card spend
+Error rate
+Chip vs non-chip transactions
+Expired card usage
+
+3. merchant_geography_metrics
+City × State × Merchant Category (MCC)
+### Purpose:
+Merchant performance tracking
+Geographic transaction concentration
+Error identification
+### Key metrics:
+Transaction volume
+Total spend
+Error counts and 
+Error rates
+
+# How to Run Project
+spark-submit /DataProject.py
+
+# Tech Stack
+Apache Spark (PySpark)
+Spark SQL
+Python
+Parquet (columnar storage)
+Git & GitHub
+Linux environment
+
+# Key Skills Demonstrated
+End-to-end data pipeline design
+PySpark data processing
+Spark SQL analytics
+Financial data modeling
+Data quality and schema enforcement
+Business-driven analytics engineering
+
+# Future Improvements
+Airflow orchestration
+Data quality checks
+Incremental data processing
+Cloud deployment (S3 + EMR / Databricks)
+BI integration (Power BI / Tableau)
+
+# Author
+Love Adeola - Aspiring Data Engineer
