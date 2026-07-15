@@ -162,4 +162,4 @@ spark-submit /DataProject.py
 - BI integration (Power BI / Tableau)
 
 # Author
-Love Adeola - Aspiring Data Engineer
+Love Adeola - Data Engineer
